@@ -40,7 +40,10 @@ class ManageVehicles:
     def add_entry(self):
         ticket_id = input("Nhập ID thẻ gửi xe: ")
         vehicle_type = input("Nhập loại xe (xe đạp(0)/xe máy(1)): ")
-        license_plate = input("Nhập biển số xe: ")
+        if vehicle_type == '0':
+            license_plate = "null"
+        else:
+            license_plate = input("Nhập biển số xe: ")
         year, month, day, hour, minute = map(int, input("Nhập thời gian gửi xe(năm,tháng,ngày,giờ,phút): ").split(","))
         parking_time = datetime(year, month, day, hour, minute)
         new_vehicle = Vehicle(vehicle_type, license_plate, parking_time, ticket_id)
@@ -48,7 +51,7 @@ class ManageVehicles:
         self.currentVehicle += 1
         print("Đã thêm mới lượt gửi xe.")
 
-#Hàm lấy xe
+    #Hàm lấy xe
 
     def checkout(self):
         ticket_id = input("Nhập ID thẻ gửi xe: ")
